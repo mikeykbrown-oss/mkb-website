@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Michael Brown",
-  description: "Msrine Biologist, Consultant, Ocean Adventurer",
+  description: "Marine Biologist, Consultant, Ocean Adventurer",
 };
 
 export default function RootLayout({
