@@ -259,7 +259,7 @@ export default function MKBWebsite() {
 
   const renderTopNav = () => (
     <>
-      <nav className="hidden items-center gap-6 text-sm text-stone-300 md:flex">
+      <nav className="hidden items-center gap-5 text-sm text-stone-300 xl:flex">
         {navItems.map((item) => (
           <button
             key={item.key}
@@ -270,7 +270,7 @@ export default function MKBWebsite() {
           </button>
         ))}
       </nav>
-      <div className="mt-6 flex flex-wrap gap-3 border-b border-white/10 pb-4 md:hidden">
+      <div className="mt-4 flex w-full flex-wrap justify-center gap-2 border-b border-white/10 pb-4 xl:hidden">
         {navItems.map((item) => (
           <button
             key={item.key}
@@ -493,8 +493,8 @@ export default function MKBWebsite() {
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <header className="sticky top-0 z-50 border-b border-stone-200/10 bg-slate-950/85 backdrop-blur">
         <div className="mx-auto max-w-6xl px-6 py-4">
-          <div className="flex items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between xl:gap-6">
+            <div className="flex items-center justify-center gap-3 xl:justify-start">
               <button
                 onClick={() => setPage("home")}
                 className="flex h-24 w-24 items-center justify-center bg-transparent"
@@ -525,7 +525,7 @@ export default function MKBWebsite() {
           renderSimplePage(
             "Publications",
             "Research Output",
-            "Peer-reviewed work, scientific writing, and formal research output.",
+            "A dedicated space for peer-reviewed work, scientific writing, and formal research output.",
             publications.map((item) => <PublicationCard key={item} item={item} />),
           )}
         {page === "projects" &&
@@ -558,7 +558,10 @@ export default function MKBWebsite() {
                 <div>
                   <p className="text-sm uppercase tracking-[0.3em] text-sky-200">Get in Touch</p>
                   <h1 className="mt-3 font-serif text-4xl text-stone-50 md:text-5xl">Contact</h1>
-                  
+                  <p className="mt-5 max-w-md text-base leading-8 text-slate-300">
+                    Use the form to send a direct enquiry. It is configured for a real form endpoint, with a direct email fallback if needed.
+                  </p>
+
                   <div className="mt-8 space-y-4">
                     {contactDetails.map((item) => (
                       <ContactInfoCard key={item.title} item={item} />
