@@ -336,9 +336,7 @@ export default function MKBWebsite() {
                 </a>
               ))}
             </div>
-          </div>
-
-          </div>
+        </div>
       </section>
 
       <section id="about" className="border-t border-white/10 bg-slate-900/60">
@@ -492,12 +490,12 @@ export default function MKBWebsite() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <header className="sticky top-0 z-50 border-b border-stone-200/10 bg-slate-950/85 backdrop-blur">
-        <div className="mx-auto max-w-6xl px-6 py-4">
+        <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between xl:gap-6">
-            <div className="flex items-center justify-center gap-3 xl:justify-start">
+            <div className="flex min-w-0 items-center justify-center gap-3 xl:justify-start">
               <button
                 onClick={() => setPage("home")}
-                className="flex h-24 w-24 items-center justify-center bg-transparent"
+                className="flex h-16 w-16 items-center justify-center bg-transparent sm:h-20 sm:w-20 lg:h-24 lg:w-24 shrink-0"
                 aria-label="Go to home page"
               >
                 <SiteLogo variant="light" />
@@ -505,11 +503,11 @@ export default function MKBWebsite() {
               <div>
                 <button
                   onClick={() => setPage("home")}
-                  className="font-serif text-left text-lg tracking-[0.04em] text-stone-100"
+                  className="font-serif text-left text-base tracking-[0.04em] text-stone-100 sm:text-lg"
                 >
                   Michael Brown
                 </button>
-                <div className="text-[11px] uppercase tracking-[0.28em] text-stone-400 whitespace-nowrap">
+                <div className="text-[10px] uppercase tracking-[0.22em] text-stone-400 sm:text-[11px] sm:tracking-[0.28em]">
                   Marine Biologist · Consultant · Ocean Adventurer
                 </div>
               </div>
