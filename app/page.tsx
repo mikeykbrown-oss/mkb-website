@@ -525,7 +525,7 @@ export default function MKBWebsite() {
           renderSimplePage(
             "Publications",
             "Research Output",
-            "A dedicated space for peer-reviewed work, scientific writing, and formal research output.",
+            "Peer-reviewed work, scientific writing, and formal research output.",
             publications.map((item) => <PublicationCard key={item} item={item} />),
           )}
         {page === "projects" &&
@@ -558,10 +558,7 @@ export default function MKBWebsite() {
                 <div>
                   <p className="text-sm uppercase tracking-[0.3em] text-sky-200">Get in Touch</p>
                   <h1 className="mt-3 font-serif text-4xl text-stone-50 md:text-5xl">Contact</h1>
-                  <p className="mt-5 max-w-md text-base leading-8 text-slate-300">
-                    Use the form to send a direct enquiry. It is configured for a real form endpoint, with a direct email fallback if needed.
-                  </p>
-
+                  
                   <div className="mt-8 space-y-4">
                     {contactDetails.map((item) => (
                       <ContactInfoCard key={item.title} item={item} />
