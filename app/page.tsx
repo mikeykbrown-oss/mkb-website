@@ -28,11 +28,13 @@ function SurfaceCard({ children, dark = false, className = "" }: { children: Rea
   );
 }
 
-function PublicationCard({ item, dark = false }: { item: string; dark?: boolean }) {
+function PublicationCard({ item, dark = false }: { item: { title: string; url: string }; dark?: boolean }) {
   return (
-    <SurfaceCard dark={dark}>
-      <p className="text-sm leading-7 text-slate-300">{item}</p>
-    </SurfaceCard>
+    <a href={item.url} target="_blank" rel="noreferrer" className="block">
+      <SurfaceCard dark={dark} className="h-full">
+        <p className="text-sm leading-7 text-slate-300">{item.title}</p>
+      </SurfaceCard>
+    </a>
   );
 }
 
@@ -146,17 +148,45 @@ export default function MKBWebsite() {
     },
   ];
 
-  const publications: string[] = [
-    "Integrative taxonomy reveals the presence of a new species of Cyanea (Scyphozoa: Discomedusae: Semaeostomeae: Cyaneidae) from the West coast of Africa. Zootaxa 5507(3):401–426 (Samsodien et al., 2024) DOI: 10.11646/zootaxa.5507.3.1",
-    "Ecology of Rhizostomeae. Frontiers in Marine Biology (Thibault et al., 2024) DOI: 10.1016/bs.amb.2024.07.008",
-    "Cautioning the Move from Morphology to Molecules in the Taxonomy of Metazoa: Comments on Lawley et al. South African Journal of Science 118(9–10) (Brown & Gibbons, 2022) http://dx.doi.org/10.17159/sajs.2022/12590",
-    "Community and Marine Conservation in South Africa. Are We Still Missing the Mark? Frontiers in Marine Science 9 (Peer et al., 2022) https://doi.org/10.3389/fmars.2022.884442",
-    "Swarms of the Hyperiid Amphipod Themisto gaudichaudii Along the False Bay Coastline. Journal of Natural History 56(5–8) (Brown & Gibbons, 2022) https://doi.org/10.1080/00222933.2022.2089606",
-    "Null Models for Null Hypotheses in Taxonomy: A Test Using Scyphozoa. Biological Journal of the Linnean Society 134(1) (Brown & Gibbons, 2021) https://doi.org/10.1093/biolinnean/blab070",
-    "A New Macromedusa from the Coast of Mozambique: Aurelia mozambica sp. nov. Zootaxa 4933(2) (Brown et al., 2021) DOI: 10.11646/zootaxa.4933.2.5",
+  const publications: { title: string; url: string }[] = [
+    {
+      title:
+        "Integrative taxonomy reveals the presence of a new species of Cyanea (Scyphozoa: Discomedusae: Semaeostomeae: Cyaneidae) from the West coast of Africa. Zootaxa 5507(3):401–426 (Samsodien et al., 2024) DOI: 10.11646/zootaxa.5507.3.1",
+      url: "https://doi.org/10.11646/zootaxa.5507.3.1",
+    },
+    {
+      title:
+        "Ecology of Rhizostomeae. Frontiers in Marine Biology (Thibault et al., 2024) DOI: 10.1016/bs.amb.2024.07.008",
+      url: "https://doi.org/10.1016/bs.amb.2024.07.008",
+    },
+    {
+      title:
+        "Cautioning the Move from Morphology to Molecules in the Taxonomy of Metazoa: Comments on Lawley et al. South African Journal of Science 118(9–10) (Brown & Gibbons, 2022) http://dx.doi.org/10.17159/sajs.2022/12590",
+      url: "http://dx.doi.org/10.17159/sajs.2022/12590",
+    },
+    {
+      title:
+        "Community and Marine Conservation in South Africa. Are We Still Missing the Mark? Frontiers in Marine Science 9 (Peer et al., 2022) https://doi.org/10.3389/fmars.2022.884442",
+      url: "https://doi.org/10.3389/fmars.2022.884442",
+    },
+    {
+      title:
+        "Swarms of the Hyperiid Amphipod Themisto gaudichaudii Along the False Bay Coastline. Journal of Natural History 56(5–8) (Brown & Gibbons, 2022) https://doi.org/10.1080/00222933.2022.2089606",
+      url: "https://doi.org/10.1080/00222933.2022.2089606",
+    },
+    {
+      title:
+        "Null Models for Null Hypotheses in Taxonomy: A Test Using Scyphozoa. Biological Journal of the Linnean Society 134(1) (Brown & Gibbons, 2021) https://doi.org/10.1093/biolinnean/blab070",
+      url: "https://doi.org/10.1093/biolinnean/blab070",
+    },
+    {
+      title:
+        "A New Macromedusa from the Coast of Mozambique: Aurelia mozambica sp. nov. Zootaxa 4933(2) (Brown et al., 2021) DOI: 10.11646/zootaxa.4933.2.5",
+      url: "https://doi.org/10.11646/zootaxa.4933.2.5",
+    },
   ];
 
-  const leadPublications = publications.filter((publication) => publication.includes("(Brown"));
+  const leadPublications = publications.filter((publication) => publication.title.includes("(Brown"));
 
   const opinionPieces: OpinionItem[] = [
     {
@@ -192,7 +222,7 @@ export default function MKBWebsite() {
   ];
 
   const contactDetails: ContactItem[] = [
-    { title: "Email", text: "mikeykbrown@gmail.com" },
+    { title: "Email", text: "mike@michaelbrown.co.za" },
     { title: "Phone", text: "+27 71 473 5502" },
     { title: "Base", text: "Cape Town, South Africa" },
   ];
@@ -216,7 +246,7 @@ export default function MKBWebsite() {
       subject: contactForm.subject || "Website enquiry",
       body: `Name: ${contactForm.name}\nEmail: ${contactForm.email}\n\n${contactForm.message}`,
     });
-    return `mailto:mikeykbrown@gmail.com?${params.toString()}`;
+    return `mailto:mike@michaelbrown.co.za?${params.toString()}`;
   }, [contactForm]);
 
   const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -410,7 +440,7 @@ export default function MKBWebsite() {
           </div>
           <div className="grid gap-4">
             {leadPublications.map((item) => (
-              <PublicationCard key={item} item={item} />
+              <PublicationCard key={item.title} item={item} />
             ))}
           </div>
         </div>
@@ -525,7 +555,7 @@ export default function MKBWebsite() {
             "Publications",
             "Research Output",
             "A dedicated space for peer-reviewed work, scientific writing, and formal research output.",
-            publications.map((item) => <PublicationCard key={item} item={item} />),
+            publications.map((item) => <PublicationCard key={item.title} item={item} />),
           )}
         {page === "projects" &&
           renderSimplePage(
