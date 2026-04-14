@@ -223,7 +223,6 @@ export default function MKBWebsite() {
 
   const contactDetails: ContactItem[] = [
     { title: "Email", text: "mike@michaelbrown.co.za" },
-    { title: "Phone", text: "+27 71 473 5502" },
     { title: "Base", text: "Cape Town, South Africa" },
   ];
 
